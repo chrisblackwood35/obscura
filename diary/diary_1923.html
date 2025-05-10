@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Diary Entry – October 14, 1923</title>
   <style>
     body {
@@ -12,33 +13,53 @@
       padding: 0;
       background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
     }
+
     .container {
+      width: 90%;
       max-width: 800px;
-      margin: 50px auto;
+      margin: 30px auto;
       background-color: #1a1a1a;
-      padding: 30px;
+      padding: 20px;
       border: 1px solid #333;
       box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
     }
+
     h1 {
       font-size: 1.8em;
       color: #cc4444;
       margin-bottom: 10px;
     }
+
     h2 {
       font-size: 1.2em;
       color: #999;
       margin-top: 0;
     }
+
     p {
       line-height: 1.6;
       margin-bottom: 15px;
     }
+
     .assinatura {
       font-style: italic;
       color: #777;
       text-align: right;
       margin-top: 30px;
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.4em;
+      }
+
+      h2 {
+        font-size: 1em;
+      }
+
+      .container {
+        padding: 15px;
+      }
     }
   </style>
 </head>
