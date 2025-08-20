@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>October 28, 1923 – Manhattan</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       margin: 0;
@@ -20,6 +21,10 @@
       font-size: 28px;
       font-family: 'Courier New', Courier, monospace;
       text-shadow: 2px 2px 5px #000;
+    }
+    .header img {
+      max-width: 100%;
+      height: auto;
     }
     .container {
       max-width: 900px;
@@ -63,10 +68,13 @@
     .gif {
       display: block;
       margin: 20px auto;
+      max-width: 100%;
+      height: auto;
     }
     .guestbook {
       display: block;
       width: fit-content;
+      max-width: 90%;
       margin: 20px auto;
       padding: 10px 20px;
       font-family: "Comic Sans MS", cursive, sans-serif;
@@ -75,6 +83,28 @@
       color: #000;
       border: 3px dotted #ff00ff;
       text-decoration: none;
+      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        margin: 15px;
+        padding: 20px;
+      }
+      h1 {
+        font-size: 22px;
+      }
+      p {
+        font-size: 15px;
+      }
+      .header {
+        font-size: 22px;
+        padding: 15px;
+      }
+      .guestbook {
+        font-size: 16px;
+        padding: 8px 15px;
+      }
     }
   </style>
 </head>
