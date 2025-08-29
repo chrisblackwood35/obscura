@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>📜 The Digital Streets of 2025</title>
   <style>
     body {
@@ -17,6 +18,7 @@
       text-shadow: 2px 2px 5px #0000ff;
       font-size: 3em;
       margin-bottom: 20px;
+      word-wrap: break-word;
     }
     h2 {
       color: yellow;
@@ -24,6 +26,7 @@
       margin-top: 50px;
       border-top: 2px dashed #00ffff;
       padding-top: 20px;
+      word-wrap: break-word;
     }
     p {
       max-width: 800px;
@@ -33,6 +36,7 @@
       background: rgba(0, 0, 0, 0.6);
       padding: 10px;
       border: 1px solid #00ffcc;
+      word-wrap: break-word;
     }
     marquee {
       color: #ffcc00;
@@ -55,6 +59,29 @@
       padding: 15px;
       border: 3px groove #ff00ff;
       background: black;
+      max-width: 90%;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    @media (max-width: 600px) {
+      body {
+        padding: 10px;
+      }
+      h1 {
+        font-size: 2em;
+      }
+      h2 {
+        font-size: 1.5em;
+      }
+      p {
+        font-size: 1em;
+        padding: 8px;
+      }
+      marquee {
+        font-size: 1.2em;
+      }
     }
   </style>
 </head>
@@ -92,13 +119,13 @@
   <h2>The City Without a Center</h2>
   <p>The internet, in 2025, is not a clean network, but a living and dirty city, with narrow streets, alleys lit by flickering neon, squares where people discuss philosophy, and alleys where hackers trade forbidden tools.</p>
 
-  <!--  <div class="box-gif">
+  <div class="box-gif">
     <img src="https://i.gifer.com/7efs.gif" alt="Glitch GIF">
   </div>
 
   <p>And in the midst of this chaos, there is something precious:<br>
   no one is just a consumer.<br>
-  Everyone is also a creator.</p>  -->
+  Everyone is also a creator.</p>
 
   <marquee behavior="alternate" scrollamount="10">🔥 LONG LIVE THE LIBERTARIAN CHAOS OF THE NET 🔥</marquee>
 
