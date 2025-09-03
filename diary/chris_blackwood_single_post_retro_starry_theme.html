@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>“As Lâmpadas que Digitam” — Diário de Chris Blackwood (Retro)</title>
+  <meta name="description" content="Entrada única do diário de Chris Blackwood em tema retrô estrelado — Cross Hollow e os sinais luminosos." />
+  <meta property="og:title" content="“As Lâmpadas que Digitam” — Retro Starry" />
+  <meta property="og:description" content="Tema web 1.0 com fundo estrelado, neon e CRT opcional." />
+  <meta property="og:type" content="article" />
+  <meta name="color-scheme" content="dark" />
+  <style>
+    /* ===== RETRO STARRY THEME (no external assets) ===== */
+    :root{
+      --bg0:#04050a;           /* space */
+      --ink:#e9f0ff;           /* text */
+      --muted:#9fb0cc;
+      --neon:#65d5ff;          /* cyan neon */
+      --neon2:#ff7ff8;         /* magenta neon */
+      --panel:#0a0f1a;         /* card base */
+      --edge:rgba(255,255,255,.08);
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+      --max: 920px;
+      --glow: 0 0 6px var(--neon), 0 0 18px var(--neon);
+      --glow2: 0 0 6px var(--neon2), 0 0 18px var(--neon2);
+    }
+
+    /* starfield via layered radial-gradients */
+    html,body{height:100%}
+    body{
+      margin:0; color:var(--ink); font:400 17px/1.7 var(--serif);
+      background:
+        radial-gradient(1px 1px at 10% 20%, #fff8 98%, transparent 100%),
+        radial-gradient(1px 1px at 30% 80%, #fff6 98%, transparent 100%),
+        radial-gradient(1px 1px at 70% 30%, #fff7 98%, transparent 100%),
+        radial-gradient(1px 1px at 90% 60%, #fff5 98%, transparent 100%),
+        radial-gradient(2px 2px at 50% 50%, #fff3 98%, transparent 100%),
+        linear-gradient(180deg, #060815 0%, #03040a 60%, #02030a 100%),
+        var(--bg0);
+      background-attachment: fixed;
+      letter-spacing:.15px;
+    }
+
+    /* flickering neon header */
+    header.site{position:sticky;top:0;z-index:10;backdrop-filter:blur(6px) saturate(140%);
+      border-bottom:1px solid var(--edge);
+      background:linear-gradient(to bottom, rgba(5,8,18,.85), rgba(5,8,18,.25));}
+    .mast{max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 18px}
+    .brand h1{margin:0;font-family:var(--mono);font-size:20px;letter-spacing:2px;text-transform:uppercase;
+      color:#e9ffff;text-shadow:var(--glow)}
+    .brand small{display:block;margin-top:2px;color:var(--muted);font-family:var(--mono)}
+
+    .actions{display:flex;gap:10px}
+    .btn,button{font-family:var(--mono);font-size:12px;letter-spacing:.6px;text-transform:uppercase;padding:8px 12px;cursor:pointer;
+      border-radius:10px; border:1px solid var(--edge); color:var(--ink);
+      background:linear-gradient(180deg,#0d1326,#070b18); box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}
+    .btn:hover,button:hover{border-color:#65d5ff80; box-shadow:0 0 10px #65d5ff40}
+
+    .wrap{max-width:var(--max);margin:0 auto;padding:24px 18px 96px}
+
+    /* CRT toggle */
+    .crt *{ position: relative }
+    .crt:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.07;background:
+      repeating-linear-gradient(180deg, rgba(255,255,255,.15) 0 1px, transparent 1px 3px)}
+    .crt:after{content:"";position:fixed;inset:0;pointer-events:none;box-shadow: inset 0 0 200px rgba(0,0,0,.6)}
+
+    .progress{position:fixed;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,var(--neon), transparent);
+      transform-origin:left center; transform:scaleX(0); opacity:.95}
+
+    article.post{margin:22px 0 0; border:1px solid var(--edge); border-radius:16px; overflow:hidden;
+      background:linear-gradient(180deg, rgba(10,15,26,.85), rgba(10,15,26,.6)); box-shadow:0 40px 100px rgba(0,0,0,.35)}
+
+    .hero{display:grid; place-items:center; aspect-ratio: 16/6; position:relative; overflow:hidden}
+    .hero:before{content:"";position:absolute;inset:-20%;
+      background: radial-gradient(60% 60% at 50% 50%, #65d5ff20 0%, transparent 70%),
+                  radial-gradient(60% 60% at 70% 30%, #ff7ff820 0%, transparent 70%);
+      filter: blur(20px);
+    }
+    .hero h2{ margin:0; font-size:32px; letter-spacing:1.2px; text-transform:uppercase;
+      font-family:var(--mono); color:#eaffff; text-shadow: var(--glow), var(--glow2) }
+
+    .post-inner{padding:22px}
+    .sub{margin:6px 0 0;color:var(--muted);font-size:15px}
+    .meta{list-style:none;padding:0;margin:12px 0 0;display:flex;gap:14px;flex-wrap:wrap}
+    .meta li{font-family:var(--mono);font-size:12px;color:var(--muted)}
+
+    .body{margin-top:10px}
+    .body p{margin:16px 0}
+    .body p:first-of-type::first-letter{font-size:3.4rem;float:left;line-height:.9;padding:8px 10px 0 0;color:#a6ecff;text-shadow:0 0 12px #65d5ff90}
+    blockquote{margin:18px 0;padding:12px 14px;border:1px dashed #65d5ff66;border-radius:10px;background:linear-gradient(180deg,#0c1224,#0a0f1a);
+      box-shadow: inset 0 0 20px #65d5ff20}
+
+    hr.sep{border:0;border-top:1px dashed var(--edge);margin:24px 0}
+
+    .toc{margin:16px 0 10px;padding:14px;border:1px dashed var(--edge);border-radius:12px;background:linear-gradient(180deg,#0c1222,#0a0f1a)}
+    .toc h3{margin:0 0 6px 0;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;font-family:var(--mono)}
+    .toc ul{margin:0;padding-left:18px;display:grid;gap:4px}
+    .toc a{color:var(--ink);text-decoration:none;border-bottom:1px dotted transparent}
+    .toc a:hover{border-bottom-color:var(--neon)}
+
+    .taglist{margin-top:8px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+    .taglist a{color:var(--muted);text-decoration:none;border-bottom:1px dotted var(--edge)}
+
+    .bio{display:grid;grid-template-columns:84px 1fr;gap:14px;align-items:start;padding:14px;border:1px solid var(--edge);border-radius:12px;background:linear-gradient(180deg,#0c1222,#0a0f1a)}
+    .bio img{width:84px;height:84px;border-radius:50%;border:1px solid var(--edge);object-fit:cover;filter:grayscale(100%) contrast(110%)}
+    .bio h4{margin:0 0 4px 0}
+
+    .navpost{display:flex;justify-content:space-between;gap:10px}
+    .navpost a{display:block;flex:1;text-decoration:none;border:1px dashed var(--edge);padding:12px 14px;border-radius:12px;background:linear-gradient(180deg,#0c1222,#0a0f1a);color:var(--ink)}
+    .navpost small{color:var(--muted);display:block}
+
+    /* retro widgets */
+    .badge{display:inline-block;padding:6px 10px;border:1px solid var(--edge);border-radius:999px;font-family:var(--mono);font-size:11px;
+      background:linear-gradient(180deg,#0f1630,#0a0f1a); box-shadow:0 0 12px #65d5ff20}
+
+    .terminal{font-family:var(--mono);font-size:.95rem;background:#060910;border:1px solid #65d5ff33;border-radius:12px;padding:14px;color:#ccf;
+      box-shadow: inset 0 0 30px #000a}
+
+    @media print{
+      header.site,.actions,.progress{display:none!important}
+      body{background:#fff;color:#111}
+      article.post{box-shadow:none;border-color:#ccc}
+      .body p:first-of-type::first-letter{text-shadow:none;color:#111}
+    }
+  </style>
+</head>
+<body>
+  <div class="progress" id="progress"></div>
+  <header class="site">
+    <div class="mast">
+      <div class="brand">
+        <h1>Diário de Chris Blackwood</h1>
+        <small>Retro Starry — single post</small>
+      </div>
+      <div class="actions">
+        <button id="btnCRT" title="Alternar efeito CRT">CRT</button>
+        <button id="btnCopy" title="Copiar link da seção visível">Copiar link</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <article class="post" id="post">
+      <div class="hero">
+        <h2>AS LÂMPADAS QUE DIGITAM</h2>
+      </div>
+      <div class="post-inner">
+        <header>
+          <span class="badge">Cross Hollow • 03/03/1926</span>
+          <p class="sub">Ref.: CB-1926-014 • Clima: garoa persistente • Leitura: <span id="readTime">—</span></p>
+        </header>
+
+        <nav class="toc" aria-label="Índice da entrada">
+          <h3>Navegue nesta entrada</h3>
+          <ul id="toc"></ul>
+        </nav>
+
+        <section class="body" id="content">
+          <h3 id="chegada">Chegada e Primeiras Anotações</h3>
+          <p>Cross Hollow fala baixo. Portas semiabertas por escuta, não por descuido. As lâmpadas estalam em sequência ao cair da noite, como dedos invisíveis sobre vidro quente.</p>
+
+          <h3 id="enfermeira">A Enfermeira e a Sala que Não Existe</h3>
+          <p>Pacientes sonham com uma sala sem janelas; acordam com hematomas discretos nos pulsos. Horários dos sonhos cruzados com as sequências de luz — coincidências insolentes.</p>
+
+          <h3 id="codigos">Hipótese dos Códigos Luminosos</h3>
+          <div class="terminal">
+            $ captarSequenciaLuz --fps 120 \↵<br/>
+            $ agrupar --tolerancia 0.04 \↵<br/>
+            $ inferir-alfabeto --prior ritmos_locais \↵<br/>
+            $ decodificar &gt; transcrito.txt
+          </div>
+          <p>Intervalos: <code>.12s</code>, <code>.12s</code>, <code>.36s</code>, pausa. Parece Morse, mas os grupos não fecham. Talvez um <em>proto-Morse</em> nascido do atrito entre cobre velho e algo que insiste em atravessar.</p>
+
+          <h3 id="medidas">Medidas de Campo</h3>
+          <p>Giz no chão para medir pegadas que voltam. A linha de sal não afasta; <em>mede</em>. Queda média de pressão: −2.3 hPa durante as sequências.</p>
+
+          <blockquote>Não investigamos fantasmas. Investigamos as regras que permitem que algo assemelhado a nós permaneça depois.</blockquote>
+
+          <h3 id="proximos-passos">Próximos Passos</h3>
+          <ul>
+            <li>Mapear as sequências por três noites.</li>
+            <li>Cruzar com prontuários dos “sonâmbulos”.</li>
+            <li>Testar o alfabeto dos despossuídos (padre K.).</li>
+            <li>Evitar corredores que devolvem o sussurro por <strong>três</strong> vezes.</li>
+          </ul>
+        </section>
+
+        <div class="taglist">#CrossHollow #retro #neon #sinais</div>
+
+        <hr class="sep" />
+        <section class="bio">
+          <img src="https://i.pravatar.cc/144?img=12" alt="Retrato estilizado de Chris Blackwood"/>
+          <div>
+            <h4>Chris Blackwood</h4>
+            <p>Investigador de fenômenos paranormais, veterano da 1ª Divisão. Em 1926, faz anotações metódicas sobre o que insiste em permanecer.</p>
+          </div>
+        </section>
+
+        <hr class="sep" />
+        <nav class="navpost" aria-label="Navegação do post">
+          <a href="#"><small>Anterior</small> A Janela que Respira</a>
+          <a href="#" style="text-align:right"><small>Próximo</small> O Coral sem Maestro</a>
+        </nav>
+      </div>
+    </article>
+  </main>
+
+  <script>
+    // Progress bar
+    const progress=document.getElementById('progress');
+    const updateProgress=()=>{
+      const h=document.documentElement; const sc=h.scrollTop; const m=h.scrollHeight-h.clientHeight; const p=(m?sc/m:0);
+      progress.style.transform=`scaleX(${p})`;
+    };
+    document.addEventListener('scroll',updateProgress,{passive:true});
+    updateProgress();
+
+    // TOC
+    const toc=document.getElementById('toc');
+    document.querySelectorAll('.body h3').forEach(h=>{
+      const id=h.id||(h.textContent.trim().toLowerCase().replace(/[^a-z0-9]+/g,'-')); h.id=id;
+      const li=document.createElement('li'); const a=document.createElement('a'); a.href='#'+id; a.textContent=h.textContent; li.appendChild(a); toc.appendChild(li);
+    });
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click',ev=>{const id=a.getAttribute('href').slice(1);const el=document.getElementById(id);if(el){ev.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});}})
+    });
+
+    // Copy section link
+    document.getElementById('btnCopy').addEventListener('click',async()=>{
+      const sections=[...document.querySelectorAll('.body h3')];
+      const visible=sections.find(h=>{const r=h.getBoundingClientRect();return r.top>=0 && r.top<window.innerHeight*0.5})||sections[0];
+      const url=new URL(location.href); url.hash='#'+visible.id;
+      try{await navigator.clipboard.writeText(url.toString()); const b=document.getElementById('btnCopy'); const o=b.textContent; b.textContent='Link copiado!'; setTimeout(()=>b.textContent=o,1400);}catch(e){alert('Não foi possível copiar.');}
+    });
+
+    // Reading time
+    const text=document.getElementById('content').innerText; const words=(text.match(/\S+/g)||[]).length; const mins=Math.max(1,Math.round(words/200));
+    document.getElementById('readTime').textContent=`${mins} min`;
+
+    // CRT toggle
+    const root=document.documentElement;
+    document.getElementById('btnCRT').addEventListener('click',()=>{
+      document.body.classList.toggle('crt');
+    });
+  </script>
+</body>
+</html>
